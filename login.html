@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./assets/css/output.css" />
+  </head>
+  <body>
+    <div class="bg-white w-full h-full absolute bg-opacity-40"></div>
+    <main
+      class="min-h-screen bg-hero-topography-blue-dark-100 flex justify-center items-center"
+    >
+      <div class="bg-base-100 p-6 border-slate-300 rounded-lg border z-10 w-80">
+        <div class="flex justify-evenly w-full mb-2">
+          <img src="./assets/images/smkn1pml.png" class="h-16" />
+          <img src="./assets/images/dapodik.png" class="h-16" />
+        </div>
+        <h1 class="text-3xl">Login</h1>
+        <p class="text-red-800 mt-4">Error: error message placeholder</p>
+        <form action="user/index.html">
+          <div class="control-form">
+            <label for="username" class="label"
+              ><span class="label-text">Username</span></label
+            >
+            <input
+              type="text"
+              id="username"
+              placeholder="username"
+              class="input input-bordered w-full"
+              required
+            />
+          </div>
+          <div class="control-form">
+            <label for="password" class="label"
+              ><span class="label-text">Password</span></label
+            >
+            <input
+              type="password"
+              id="password"
+              placeholder="password"
+              class="input input-bordered w-full"
+              required
+            />
+          </div>
+          <div class="flex justify-end">
+            <input type="submit" value="Login" class="btn w-full mt-4" />
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

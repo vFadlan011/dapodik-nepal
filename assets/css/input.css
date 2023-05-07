@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base {
+  h2 {
+    @apply mb-2;
+  }
+
+  main h1 {
+    @apply font-light text-3xl;
+  }
+  table {
+    @apply my-3;
+  }
+
+  table,
+  .table td {
+    @apply whitespace-normal;
+  }
+
+  td a,
+  th a {
+    @apply link link-primary font-normal;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-5xl mx-auto z-10 p-2;
+  }
+
+  .disabled-menu {
+    @apply active:bg-slate-400 active:bg-opacity-5;
+  }
+
+  section .control-form {
+    @apply flex flex-col lg:flex-row justify-between max-w-4xl border-b border-b-slate-300 lg:border-b-slate-200;
+  }
+
+  section .control-form .input,
+  section .control-form .select,
+  section .control-form .file-input {
+    @apply lg:w-96 my-2 order-3 lg:order-2;
+  }
+
+  section .label {
+    @apply w-full lg:w-32 order-1 font-semibold lg:font-normal;
+  }
+
+  section .label-guide {
+    @apply w-full lg:w-80 text-xs order-2 lg:order-3 font-normal;
+  }
+
+  .copy-container {
+    @apply w-full flex justify-between items-center;
+  }
+
+  .copy-btn {
+    @apply btn btn-sm btn-ghost;
+  }
+
+  .copy-btn img {
+    @apply w-5;
+  }
+
+  .quill .ql-toolbar {
+    @apply rounded-t-md;
+  }
+
+  .quill .ql-container {
+    @apply rounded-b-md min-h-12;
+  }
+
+  .quill .ql-editor {
+    @apply min-h-[128px];
+  }
+}
