@@ -10,8 +10,9 @@
   main h1 {
     @apply font-light text-3xl;
   }
-  table {
-    @apply my-3;
+
+  main h2 {
+    @apply font-light text-2xl;
   }
 
   table,
@@ -30,49 +31,54 @@
     @apply max-w-5xl mx-auto z-10 p-2;
   }
 
+  .container section {
+    @apply mt-4;
+  }
+
   .disabled-menu {
     @apply active:bg-slate-400 active:bg-opacity-5;
   }
 
   section .control-form {
-    @apply flex flex-col lg:flex-row justify-between max-w-4xl border-b border-b-slate-300 lg:border-b-slate-200;
+    @apply flex flex-col lg:flex-row justify-evenly items-center max-w-4xl border-b border-b-slate-300 lg:border-b-slate-200;
   }
 
   section .control-form .input,
   section .control-form .select,
-  section .control-form .file-input {
-    @apply lg:w-96 my-2 order-3 lg:order-2;
+  section .control-form .file-input,
+  section .control-form .radio-container {
+    @apply w-full lg:w-[28rem] my-2 mx-0 lg:ml-8 order-3 lg:order-2;
   }
 
   section .label {
     @apply w-full lg:w-32 order-1 font-semibold lg:font-normal;
   }
 
+  section .tooltip-guide {
+    @apply order-2 lg:order-3 normal-case hidden lg:block;
+  }
+
   section .label-guide {
-    @apply w-full lg:w-80 text-xs order-2 lg:order-3 font-normal;
+    @apply w-full lg:w-80 text-xs order-2 lg:order-3 font-normal visible lg:hidden;
   }
 
-  .copy-container {
-    @apply w-full flex justify-between items-center;
+  section .radio-container {
+    @apply flex items-center;
   }
 
-  .copy-btn {
-    @apply btn btn-sm btn-ghost;
+  section .radio-container .label {
+    @apply order-none ml-2 font-normal;
   }
 
-  .copy-btn img {
-    @apply w-5;
+  .user-view .table :where(th, td) {
+    @apply border border-slate-300 p-2;
   }
 
-  .quill .ql-toolbar {
-    @apply rounded-t-md;
+  .label.required .label-text {
+    @apply after:content-['*'] after:text-red-700 after:font-semibold;
   }
 
-  .quill .ql-container {
-    @apply rounded-b-md min-h-12;
-  }
-
-  .quill .ql-editor {
-    @apply min-h-[128px];
+  .label.optional .label-text {
+    @apply after:content-['(Opsional)'] after:italic after:text-xs after:text-slate-500 after:ml-1;
   }
 }

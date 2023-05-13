@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajukan Perubahan Data</title>
+    <link rel="stylesheet" href="../assets/css/output.css" />
+  </head>
+  <body class="bg-hero-topography-blue-dark bg-base-200">
+    <div class="z-10 border-b-2 border-b-slate-300">
+      <nav class="navbar max-w-5xl mx-auto justify-end">
+        <div class="navbar-end">
+          <div class="dropdown dropdown-left">
+            <label tabindex="0" class="btn btn-ghost btn-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h7"
+                />
+              </svg>
+            </label>
+            <ul
+              tabindex="0"
+              class="menu gap-2 menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li><a href="./index.html">Beranda</a></li>
+              <li><a class="bg-base-300" href="#">Ajukan perubahan data</a></li>
+              <li>
+                <a
+                  href="../login.html"
+                  onclick="return confirm('Yakin logout?')"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <main class="min-h-screen flex justify-center p-4">
+      <div class="container">
+        <div class="bg-base-100 p-4 border border-slate-200">
+          <h1 class="mb-2 text-4xl font-light">
+            Formulir Pengajuan Perubahan Data
+          </h1>
+          <p class="text-sm max-w-xl">
+            Data yang dikirim akan diterima oleh admin untuk diubah di DAPODIK
+            Pusat. Harap lampirkan foto beberapa dokumen agar data yang Anda
+            kirimkan bisa divalidasi oleh admin.
+          </p>
+          <form
+            action="http://localhost/vardump.php"
+            method="post"
+            class="mt-4 flex flex-col gap-1 max-w-4xl mx-auto"
+          >
+            <p class="text-red-800">Error: error text placeholder</p>
+            <!-- Data pribadi -->
+            <section id="data-pribadi">
+              <h2>Data Pribadi</h2>
+              <div class="control-form">
+                <label for="nama" class="label">
+                  <span class="label-text">Nama</span>
+                </label>
+                <input
+                  type="text"
+                  name="nama"
+                  id="nama"
+                  class="input input-bordered input-disabled"
+                  value=""
+                  disabled
+                />
+              </div>
+              <div class="control-form">
+                <label class="label">
+                  <span class="label-text">Jenis kelamin</span>
+                </label>
+                <div class="radio-container">
+                  <input
+                    type="radio"
+                    name="jenis_kelamin"
+                    id="l"
+                    value="l"
+                    class="radio radio-xs"
+                    disabled
+                  />
+                  <label for="l" class="label"> Laki-laki </label>
+                  <input
+                    type="radio"
+                    name="jenis_kelamin"
+                    id="p"
+                    value="p"
+                    class="radio radio-xs"
+                    disabled
+                  />
+                  <label for="p" class="label"> Perempuan </label>
+                </div>
+              </div>
+              <div class="control-form">
+                <label for="nisn" class="label">
+                  <span class="label-text">NISN</span>
+                </label>
+                <input
+                  type="text"
+                  name="nisn"
+                  id="nisn"
+                  class="input input-bordered input-disabled"
+                  disabled
+                />
+              </div>
+              <div class="control-form">
+                <label for="kewarganegaraan" class="label">
+                  <span class="label-text">Kewarganegaraan</span>
+                </label>
+                <select
+                  id="kewarganegaraan"
+                  name="kewarganegaraan"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="Afghanistan">Afghanistan</option>
+                  <option value="Åland Islands">Åland Islands</option>
+                  <option value="Albania">Albania</option>
+                  <option value="Algeria">Algeria</option>
+                  <option value="American Samoa">American Samoa</option>
+                  <option value="Andorra">Andorra</option>
+                  <option value="Angola">Angola</option>
+                  <option value="Anguilla">Anguilla</option>
+                  <option value="Antarctica">Antarctica</option>
+                  <option value="Antigua and Barbuda">
+                    Antigua and Barbuda
+                  </option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Armenia">Armenia</option>
+                  <option value="Aruba">Aruba</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Austria">Austria</option>
+                  <option value="Azerbaijan">Azerbaijan</option>
+                  <option value="Bahamas">Bahamas</option>
+                  <option value="Bahrain">Bahrain</option>
+                  <option value="Bangladesh">Bangladesh</option>
+                  <option value="Barbados">Barbados</option>
+                  <option value="Belarus">Belarus</option>
+                  <option value="Belgium">Belgium</option>
+                  <option value="Belize">Belize</option>
+                  <option value="Benin">Benin</option>
+                  <option value="Bermuda">Bermuda</option>
+                  <option value="Bhutan">Bhutan</option>
+                  <option value="Bolivia">Bolivia</option>
+                  <option value="Bosnia and Herzegovina">
+                    Bosnia and Herzegovina
+                  </option>
+                  <option value="Botswana">Botswana</option>
+                  <option value="Bouvet Island">Bouvet Island</option>
+                  <option value="Brazil">Brazil</option>
+                  <option value="British Indian Ocean Territory">
+                    British Indian Ocean Territory
+                  </option>
+                  <option value="Brunei Darussalam">Brunei Darussalam</option>
+                  <option value="Bulgaria">Bulgaria</option>
+                  <option value="Burkina Faso">Burkina Faso</option>
+                  <option value="Burundi">Burundi</option>
+                  <option value="Cambodia">Cambodia</option>
+                  <option value="Cameroon">Cameroon</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Cape Verde">Cape Verde</option>
+                  <option value="Cayman Islands">Cayman Islands</option>
+                  <option value="Central African Republic">
+                    Central African Republic
+                  </option>
+                  <option value="Chad">Chad</option>
+                  <option value="Chile">Chile</option>
+                  <option value="China">China</option>
+                  <option value="Christmas Island">Christmas Island</option>
+                  <option value="Cocos (Keeling) Islands">
+                    Cocos (Keeling) Islands
+                  </option>
+                  <option value="Colombia">Colombia</option>
+                  <option value="Comoros">Comoros</option>
+                  <option value="Congo">Congo</option>
+                  <option value="Congo, The Democratic Republic of The">
+                    Congo, The Democratic Republic of The
+                  </option>
+                  <option value="Cook Islands">Cook Islands</option>
+                  <option value="Costa Rica">Costa Rica</option>
+                  <option value="Cote D'ivoire">Cote D'ivoire</option>
+                  <option value="Croatia">Croatia</option>
+                  <option value="Cuba">Cuba</option>
+                  <option value="Cyprus">Cyprus</option>
+                  <option value="Czech Republic">Czech Republic</option>
+                  <option value="Denmark">Denmark</option>
+                  <option value="Djibouti">Djibouti</option>
+                  <option value="Dominica">Dominica</option>
+                  <option value="Dominican Republic">Dominican Republic</option>
+                  <option value="Ecuador">Ecuador</option>
+                  <option value="Egypt">Egypt</option>
+                  <option value="El Salvador">El Salvador</option>
+                  <option value="Equatorial Guinea">Equatorial Guinea</option>
+                  <option value="Eritrea">Eritrea</option>
+                  <option value="Estonia">Estonia</option>
+                  <option value="Ethiopia">Ethiopia</option>
+                  <option value="Falkland Islands (Malvinas)">
+                    Falkland Islands (Malvinas)
+                  </option>
+                  <option value="Faroe Islands">Faroe Islands</option>
+                  <option value="Fiji">Fiji</option>
+                  <option value="Finland">Finland</option>
+                  <option value="France">France</option>
+                  <option value="French Guiana">French Guiana</option>
+                  <option value="French Polynesia">French Polynesia</option>
+                  <option value="French Southern Territories">
+                    French Southern Territories
+                  </option>
+                  <option value="Gabon">Gabon</option>
+                  <option value="Gambia">Gambia</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ghana">Ghana</option>
+                  <option value="Gibraltar">Gibraltar</option>
+                  <option value="Greece">Greece</option>
+                  <option value="Greenland">Greenland</option>
+                  <option value="Grenada">Grenada</option>
+                  <option value="Guadeloupe">Guadeloupe</option>
+                  <option value="Guam">Guam</option>
+                  <option value="Guatemala">Guatemala</option>
+                  <option value="Guernsey">Guernsey</option>
+                  <option value="Guinea">Guinea</option>
+                  <option value="Guinea-bissau">Guinea-bissau</option>
+                  <option value="Guyana">Guyana</option>
+                  <option value="Haiti">Haiti</option>
+                  <option value="Heard Island and Mcdonald Islands">
+                    Heard Island and Mcdonald Islands
+                  </option>
+                  <option value="Holy See (Vatican City State)">
+                    Holy See (Vatican City State)
+                  </option>
+                  <option value="Honduras">Honduras</option>
+                  <option value="Hong Kong">Hong Kong</option>
+                  <option value="Hungary">Hungary</option>
+                  <option value="Iceland">Iceland</option>
+                  <option value="India">India</option>
+                  <option value="Indonesia">Indonesia</option>
+                  <option value="Iran, Islamic Republic of">
+                    Iran, Islamic Republic of
+                  </option>
+                  <option value="Iraq">Iraq</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="Isle of Man">Isle of Man</option>
+                  <option value="Israel">Israel</option>
+                  <option value="Italy">Italy</option>
+                  <option value="Jamaica">Jamaica</option>
+                  <option value="Japan">Japan</option>
+                  <option value="Jersey">Jersey</option>
+                  <option value="Jordan">Jordan</option>
+                  <option value="Kazakhstan">Kazakhstan</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Kiribati">Kiribati</option>
+                  <option value="Korea, Democratic People's Republic of">
+                    Korea, Democratic People's Republic of
+                  </option>
+                  <option value="Korea, Republic of">Korea, Republic of</option>
+                  <option value="Kuwait">Kuwait</option>
+                  <option value="Kyrgyzstan">Kyrgyzstan</option>
+                  <option value="Lao People's Democratic Republic">
+                    Lao People's Democratic Republic
+                  </option>
+                  <option value="Latvia">Latvia</option>
+                  <option value="Lebanon">Lebanon</option>
+                  <option value="Lesotho">Lesotho</option>
+                  <option value="Liberia">Liberia</option>
+                  <option value="Libyan Arab Jamahiriya">
+                    Libyan Arab Jamahiriya
+                  </option>
+                  <option value="Liechtenstein">Liechtenstein</option>
+                  <option value="Lithuania">Lithuania</option>
+                  <option value="Luxembourg">Luxembourg</option>
+                  <option value="Macao">Macao</option>
+                  <option value="Macedonia, The Former Yugoslav Republic of">
+                    Macedonia, The Former Yugoslav Republic of
+                  </option>
+                  <option value="Madagascar">Madagascar</option>
+                  <option value="Malawi">Malawi</option>
+                  <option value="Malaysia">Malaysia</option>
+                  <option value="Maldives">Maldives</option>
+                  <option value="Mali">Mali</option>
+                  <option value="Malta">Malta</option>
+                  <option value="Marshall Islands">Marshall Islands</option>
+                  <option value="Martinique">Martinique</option>
+                  <option value="Mauritania">Mauritania</option>
+                  <option value="Mauritius">Mauritius</option>
+                  <option value="Mayotte">Mayotte</option>
+                  <option value="Mexico">Mexico</option>
+                  <option value="Micronesia, Federated States of">
+                    Micronesia, Federated States of
+                  </option>
+                  <option value="Moldova, Republic of">
+                    Moldova, Republic of
+                  </option>
+                  <option value="Monaco">Monaco</option>
+                  <option value="Mongolia">Mongolia</option>
+                  <option value="Montenegro">Montenegro</option>
+                  <option value="Montserrat">Montserrat</option>
+                  <option value="Morocco">Morocco</option>
+                  <option value="Mozambique">Mozambique</option>
+                  <option value="Myanmar">Myanmar</option>
+                  <option value="Namibia">Namibia</option>
+                  <option value="Nauru">Nauru</option>
+                  <option value="Nepal">Nepal</option>
+                  <option value="Netherlands">Netherlands</option>
+                  <option value="Netherlands Antilles">
+                    Netherlands Antilles
+                  </option>
+                  <option value="New Caledonia">New Caledonia</option>
+                  <option value="New Zealand">New Zealand</option>
+                  <option value="Nicaragua">Nicaragua</option>
+                  <option value="Niger">Niger</option>
+                  <option value="Nigeria">Nigeria</option>
+                  <option value="Niue">Niue</option>
+                  <option value="Norfolk Island">Norfolk Island</option>
+                  <option value="Northern Mariana Islands">
+                    Northern Mariana Islands
+                  </option>
+                  <option value="Norway">Norway</option>
+                  <option value="Oman">Oman</option>
+                  <option value="Pakistan">Pakistan</option>
+                  <option value="Palau">Palau</option>
+                  <option value="Palestinian Territory, Occupied">
+                    Palestinian Territory, Occupied
+                  </option>
+                  <option value="Panama">Panama</option>
+                  <option value="Papua New Guinea">Papua New Guinea</option>
+                  <option value="Paraguay">Paraguay</option>
+                  <option value="Peru">Peru</option>
+                  <option value="Philippines">Philippines</option>
+                  <option value="Pitcairn">Pitcairn</option>
+                  <option value="Poland">Poland</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="Puerto Rico">Puerto Rico</option>
+                  <option value="Qatar">Qatar</option>
+                  <option value="Reunion">Reunion</option>
+                  <option value="Romania">Romania</option>
+                  <option value="Russian Federation">Russian Federation</option>
+                  <option value="Rwanda">Rwanda</option>
+                  <option value="Saint Helena">Saint Helena</option>
+                  <option value="Saint Kitts and Nevis">
+                    Saint Kitts and Nevis
+                  </option>
+                  <option value="Saint Lucia">Saint Lucia</option>
+                  <option value="Saint Pierre and Miquelon">
+                    Saint Pierre and Miquelon
+                  </option>
+                  <option value="Saint Vincent and The Grenadines">
+                    Saint Vincent and The Grenadines
+                  </option>
+                  <option value="Samoa">Samoa</option>
+                  <option value="San Marino">San Marino</option>
+                  <option value="Sao Tome and Principe">
+                    Sao Tome and Principe
+                  </option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                  <option value="Senegal">Senegal</option>
+                  <option value="Serbia">Serbia</option>
+                  <option value="Seychelles">Seychelles</option>
+                  <option value="Sierra Leone">Sierra Leone</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Slovakia">Slovakia</option>
+                  <option value="Slovenia">Slovenia</option>
+                  <option value="Solomon Islands">Solomon Islands</option>
+                  <option value="Somalia">Somalia</option>
+                  <option value="South Africa">South Africa</option>
+                  <option value="South Georgia and The South Sandwich Islands">
+                    South Georgia and The South Sandwich Islands
+                  </option>
+                  <option value="Spain">Spain</option>
+                  <option value="Sri Lanka">Sri Lanka</option>
+                  <option value="Sudan">Sudan</option>
+                  <option value="Suriname">Suriname</option>
+                  <option value="Svalbard and Jan Mayen">
+                    Svalbard and Jan Mayen
+                  </option>
+                  <option value="Swaziland">Swaziland</option>
+                  <option value="Sweden">Sweden</option>
+                  <option value="Switzerland">Switzerland</option>
+                  <option value="Syrian Arab Republic">
+                    Syrian Arab Republic
+                  </option>
+                  <option value="Taiwan">Taiwan</option>
+                  <option value="Tajikistan">Tajikistan</option>
+                  <option value="Tanzania, United Republic of">
+                    Tanzania, United Republic of
+                  </option>
+                  <option value="Thailand">Thailand</option>
+                  <option value="Timor-leste">Timor-leste</option>
+                  <option value="Togo">Togo</option>
+                  <option value="Tokelau">Tokelau</option>
+                  <option value="Tonga">Tonga</option>
+                  <option value="Trinidad and Tobago">
+                    Trinidad and Tobago
+                  </option>
+                  <option value="Tunisia">Tunisia</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="Turkmenistan">Turkmenistan</option>
+                  <option value="Turks and Caicos Islands">
+                    Turks and Caicos Islands
+                  </option>
+                  <option value="Tuvalu">Tuvalu</option>
+                  <option value="Uganda">Uganda</option>
+                  <option value="Ukraine">Ukraine</option>
+                  <option value="United Arab Emirates">
+                    United Arab Emirates
+                  </option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="United States Minor Outlying Islands">
+                    United States Minor Outlying Islands
+                  </option>
+                  <option value="Uruguay">Uruguay</option>
+                  <option value="Uzbekistan">Uzbekistan</option>
+                  <option value="Vanuatu">Vanuatu</option>
+                  <option value="Venezuela">Venezuela</option>
+                  <option value="Viet Nam">Viet Nam</option>
+                  <option value="Virgin Islands, British">
+                    Virgin Islands, British
+                  </option>
+                  <option value="Virgin Islands, U.S.">
+                    Virgin Islands, U.S.
+                  </option>
+                  <option value="Wallis and Futuna">Wallis and Futuna</option>
+                  <option value="Western Sahara">Western Sahara</option>
+                  <option value="Yemen">Yemen</option>
+                  <option value="Zambia">Zambia</option>
+                  <option value="Zimbabwe">Zimbabwe</option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="nik" class="label">
+                  <span class="label-text">NIK</span>
+                </label>
+                <input
+                  type="text"
+                  name="nik"
+                  id="nik"
+                  class="input input-bordered input-disabled"
+                  disabled
+                />
+                <div
+                  class="tooltip tooltip-left tooltip-guide"
+                  data-tip="Nomor Induk Kependudukan yang tercantum pada Kartu Keluarga, Kartu Identitas Anak, atau KTP (jika sudah memiliki) bagi WNI. NIK memiliki format 16 digit angka. Contoh: 6112090906021104.
+                Pastikan NIK tidak tertukar dengan No. Kartu Keluarga, karena keduanya memiliki format yang sama. Bagi WNA, diisi dengan nomor Kartu Izin Tinggal Terbatas (KITAS). "
+                >
+                  <button class="btn btn-xs">?</button>
+                </div>
+              </div>
+              <div class="control-form">
+                <label for="no_kk" class="label">
+                  <span class="label-text">No. KK</span>
+                </label>
+                <input
+                  type="text"
+                  name="no_kk"
+                  id="no_kk"
+                  class="input input-bordered"
+                  required
+                  minlength="16"
+                  maxlength="16"
+                />
+              </div>
+              <div class="control-form">
+                <label for="tempat_lahir" class="label">
+                  <span class="label-text">Tempat lahir</span>
+                </label>
+                <input
+                  type="text"
+                  name="tempat_lahir"
+                  id="tempat_lahir"
+                  class="input input-bordered input-disabled"
+                  disabled
+                />
+              </div>
+              <div class="control-form">
+                <label for="tanggal_lahir" class="label">
+                  <span class="label-text">Tanggal lahir</span>
+                </label>
+                <input
+                  type="text"
+                  name="tanggal_lahir"
+                  id="tanggal_lahir"
+                  class="input input-bordered input-disabled"
+                  disabled
+                />
+              </div>
+              <div class="control-form">
+                <label for="no_akta" class="label">
+                  <span class="label-text">No. Registrasi Akta Lahir</span>
+                </label>
+                <input
+                  type="text"
+                  name="no_akta"
+                  id="no_akta"
+                  class="input input-bordered"
+                  maxlength="50"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="berkebutuhan_khusus" class="label">
+                  <span class="label-text">Berkebutuhan khusus</span>
+                </label>
+                <select
+                  name="berkebutuhan_khusus"
+                  id="berkebutuhan_khusus"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="tidak">tidak</option>
+                  <option value="netra">netra (A)</option>
+                  <option value="rungu">rungu (B)</option>
+                  <option value="grahita_ringan">grahita ringan (C)</option>
+                  <option value="grahita_sedang ">grahita sedang (C1)</option>
+                  <option value="daksa_ringan">daksa ringan (D)</option>
+                  <option value="daksa_sedang ">daksa sedang (D1)</option>
+                  <option value="laras">laras (E)</option>
+                  <option value="wicara">wicara (F)</option>
+                  <option value="hyperaktif">hyperaktif (H)</option>
+                  <option value="cerdas_istimewa">cerdas istimewa (I)</option>
+                  <option value="bakat_istimewa">bakat istimewa (J)</option>
+                  <option value="kesulitan_belajar">
+                    kesulitan belajar (K)
+                  </option>
+                  <option value="narkoba">narkoba (N)</option>
+                  <option value="indigo">indigo (O)</option>
+                  <option value="down_syndrome">down syndrome (P)</option>
+                  <option value="autis">autis (Q)</option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="agama" class="label">
+                  <span class="label-text">Agama</span>
+                </label>
+                <select
+                  name="agama"
+                  id="agama"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="islam">Islam</option>
+                  <option value="kristen">Kristen</option>
+                  <option value="katholik">Katholik</option>
+                  <option value="hindu">Hindu</option>
+                  <option value="budha">Budha</option>
+                  <option value="khonghucu">Khonghucu</option>
+                  <option value="kepercayaan_kpd_tuhan_yme">
+                    Kepercayaan kpd Tuhan YME
+                  </option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="alamat_jalan" class="label">
+                  <span class="label-text">Alamat jalan</span>
+                </label>
+                <input
+                  type="text"
+                  name="alamat_jalan"
+                  id="alamat_jalan"
+                  class="input input-bordered"
+                  maxlength="200"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="rt" class="label optional">
+                  <span class="label-text">RT</span>
+                </label>
+                <input
+                  type="number"
+                  name="rt"
+                  id="rt"
+                  class="input input-bordered"
+                  min="1"
+                />
+              </div>
+              <div class="control-form">
+                <label for="rw" class="label optional">
+                  <span class="label-text">RW</span>
+                </label>
+                <input
+                  type="number"
+                  name="rw"
+                  id="rw"
+                  class="input input-bordered"
+                  min="1"
+                />
+              </div>
+              <div class="control-form">
+                <label for="nama_dusun" class="label optional">
+                  <span class="label-text">Nama dusun</span>
+                </label>
+                <input
+                  type="text"
+                  name="nama_dusun"
+                  id="nama_dusun"
+                  class="input input-bordered"
+                  maxlength="100"
+                />
+              </div>
+              <div class="control-form">
+                <label for="desa_kelurahan" class="label">
+                  <span class="label-text">Desa/Kelurahan</span>
+                </label>
+                <input
+                  type="text"
+                  name="desa_kelurahan"
+                  id="desa_kelurahan"
+                  class="input input-bordered"
+                  maxlength="100"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="kode_pos" class="label">
+                  <span class="label-text">Kode pos</span>
+                </label>
+                <input
+                  type="text"
+                  name="kode_pos"
+                  id="kode_pos"
+                  class="input input-bordered"
+                  minlength="5"
+                  maxlength="5"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="lintang" class="label optional">
+                  <span class="label-text">Lintang</span>
+                </label>
+                <input
+                  type="number"
+                  name="lintang"
+                  id="lintang"
+                  step="0.0000001"
+                  class="input input-bordered"
+                />
+              </div>
+              <div class="control-form">
+                <label for="bujur" class="label optional">
+                  <span class="label-text">Bujur</span>
+                </label>
+                <input
+                  type="number"
+                  name="bujur"
+                  id="bujur"
+                  step="0.0000001"
+                  class="input input-bordered"
+                />
+              </div>
+              <div class="control-form">
+                <label for="tempat_tinggal" class="label">
+                  <span class="label-text">Tempat tinggal</span>
+                </label>
+                <select
+                  name="tempat_tinggal"
+                  id="tempat_tinggal"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="bersama_orang_tua">Bersama orang tua</option>
+                  <option value="wali">Wali</option>
+                  <option value="kost">Kost</option>
+                  <option value="asrama">Asrama</option>
+                  <option value="panti_asuhan">Panti asuhan</option>
+                  <option value="pesantren ">Pesantren</option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="moda_transportasi" class="label">
+                  <span class="label-text">Moda transportasi</span>
+                </label>
+                <select
+                  name="moda_transportasi"
+                  id="moda_transportasi"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="jalan_kaki">Jalan kaki</option>
+                  <option value="angkutan_umum">
+                    Angkutan umum/bus/pete-pete
+                  </option>
+                  <option value="kereta_api">Kereta api</option>
+                  <option value="ojek">Ojek</option>
+                  <option value="delman_becak">
+                    Andong/bendi/sado/dokar/delman/becak
+                  </option>
+                  <option value="perahu">
+                    Perahu penyebrangan/rakit/getek
+                  </option>
+                  <option value="kuda">Kuda</option>
+                  <option value="sepeda">Sepeda</option>
+                  <option value="sepeda_motor">Sepeda motor</option>
+                  <option value="mobil_pribadi">Mobil pribadi</option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="anak_ke" class="label">
+                  <span class="label-text"
+                    >Anak ke berapa (berdasarkan KK)</span
+                  >
+                </label>
+                <input
+                  type="number"
+                  name="anak_ke"
+                  id="anak_ke"
+                  min="1"
+                  class="input input-bordered"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label class="label">
+                  <span class="label-text">Penerima KPS/PKH</span>
+                </label>
+                <div class="radio-container">
+                  <input
+                    type="radio"
+                    name="penerima_kps_pkh"
+                    id="penerima_kps_pkh_ya"
+                    value="ya"
+                    class="radio radio-xs"
+                    required
+                  />
+                  <label for="penerima_kps_pkh_ya" class="label"> Ya </label>
+                  <input
+                    type="radio"
+                    name="penerima_kps_pkh"
+                    id="penerima_kps_pkh_tidak"
+                    value="tidak"
+                    class="radio radio-xs"
+                  />
+                  <label for="penerima_kps_pkh_tidak" class="label">
+                    Tidak
+                  </label>
+                </div>
+              </div>
+              <div class="control-form">
+                <label class="label">
+                  <span class="label-text">Memiliki KIP</span>
+                </label>
+                <div class="radio-container">
+                  <input
+                    type="radio"
+                    name="mempunyai_kip"
+                    id="mempunyai_kip_ya"
+                    value="ya"
+                    class="radio radio-xs"
+                    required
+                  />
+                  <label for="mempunyai_kip_ya" class="label">Ya</label>
+                  <input
+                    type="radio"
+                    name="mempunyai_kip"
+                    id="mempunyai_kip_tidak"
+                    value="tidak"
+                    class="radio radio-xs"
+                  />
+                  <label for="mempunyai_kip_tidak" class="label">Tidak</label>
+                </div>
+              </div>
+              <div class="control-form">
+                <label for="telp_rumah" class="label optional">
+                  <span class="label-text">Telepon rumah</span>
+                </label>
+                <input
+                  type="text"
+                  name="telp_rumah"
+                  id="telp_rumah"
+                  class="input input-bordered"
+                  maxlength="20"
+                  placeholder="(021) 1234567"
+                />
+              </div>
+              <div class="control-form">
+                <label for="no_hp" class="label optional">
+                  <span class="label-text">No. HP</span>
+                </label>
+                <input
+                  type="text"
+                  name="no_hp"
+                  id="no_hp"
+                  class="input input-bordered"
+                  maxlength="15"
+                  placeholder="081234567890"
+                />
+              </div>
+              <div class="control-form">
+                <label for="email" class="label optional">
+                  <span class="label-text">Email</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="input input-bordered"
+                />
+              </div>
+            </section>
+            <section id="data-periodik">
+              <h2>Data Periodik</h2>
+              <div class="control-form">
+                <label for="tinggi_badan" class="label">
+                  <span class="label-text">Tinggi badan (cm)</span>
+                </label>
+                <input
+                  type="number"
+                  name="tinggi_badan"
+                  id="tinggi_badan"
+                  class="input input-bordered"
+                  min="1"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="berat_badan" class="label">
+                  <span class="label-text">Berat badan (kg)</span>
+                </label>
+                <input
+                  type="number"
+                  name="berat_badan"
+                  id="berat_badan"
+                  class="input input-bordered"
+                  min="1"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="lingkar_kepala" class="label optional">
+                  <span class="label-text">Lingkar kepala (cm)</span>
+                </label>
+                <input
+                  type="number"
+                  name="lingkar_kepala"
+                  id="lingkar_kepala"
+                  class="input input-bordered"
+                  min="1"
+                />
+              </div>
+              <div class="control-form">
+                <label for="jarak_rumah_ke_sekolah" class="label">
+                  <span class="label-text">Jarak rumah ke sekolah (km)</span>
+                </label>
+                <input
+                  type="number"
+                  name="jarak_rumah_ke_sekolah"
+                  id="jarak_rumah_ke_sekolah"
+                  class="input input-bordered"
+                  min="1"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="waktu_tempuh_ke_sekolah" class="label optional">
+                  <span class="label-text"
+                    >Waktu tempuh ke sekolah (jam / menit)</span
+                  >
+                </label>
+                <input
+                  type="text"
+                  name="waktu_tempuh_ke_sekolah"
+                  id="waktu_tempuh_ke_sekolah"
+                  class="input input-bordered"
+                />
+              </div>
+              <div class="control-form">
+                <label for="jumlah_saudara_kandung" class="label">
+                  <span class="label-text">Jumlah saudara kandung</span>
+                </label>
+                <input
+                  type="number"
+                  name="jumlah_saudara_kandung"
+                  id="jumlah_saudara_kandung"
+                  class="input input-bordered"
+                  min="1"
+                  required
+                />
+              </div>
+            </section>
+
+            <!-- File Validasi -->
+            <section id="file-validasi">
+              <h2>File Validasi</h2>
+              <div class="control-form">
+                <label for="file_akta" class="label">
+                  <span class="label-text">Foto Akta Kelahiran</span>
+                </label>
+                <input
+                  type="file"
+                  name="file_akta"
+                  id="file_akta"
+                  class="file-input file-input-bordered"
+                  required
+                />
+                <label for="file_akta" class="label label-guide">
+                  <span class="label-text"
+                    >File harus lebih kecil dari 2MB dan berformat jpg, jpeg,
+                    png, atau webp</span
+                  >
+                </label>
+              </div>
+            </section>
+            <div class="flex justify-end max-w-4xl">
+              <input type="submit" value="Kirim" class="btn" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
