@@ -24,6 +24,14 @@
   th a {
     @apply link link-primary font-normal;
   }
+
+  .collapse-content h4 {
+    @apply font-semibold mt-2 mb-0;
+  }
+
+  .collapse-content p {
+    @apply mt-0;
+  }
 }
 
 @layer components {
@@ -33,6 +41,18 @@
 
   .container section {
     @apply mt-4;
+  }
+
+  .copy-container {
+    @apply flex justify-between;
+  }
+
+  .copy-btn {
+    @apply btn btn-sm btn-ghost;
+  }
+
+  .copy-btn img {
+    @apply w-6;
   }
 
   .disabled-menu {
@@ -55,7 +75,7 @@
   }
 
   section .tooltip-guide {
-    @apply order-2 lg:order-3 normal-case hidden lg:block;
+    @apply order-2 lg:order-3 normal-case;
   }
 
   section .label-guide {

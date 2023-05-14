@@ -46,7 +46,7 @@
         </div>
       </nav>
     </div>
-    <main class="min-h-screen flex justify-center p-4">
+    <main class="min-h-screen flex justify-center p-0 lg:p-4">
       <div class="container">
         <div class="bg-base-100 p-4 border border-slate-200">
           <h1 class="mb-2 text-4xl font-light">
@@ -58,7 +58,7 @@
             kirimkan bisa divalidasi oleh admin.
           </p>
           <form
-            action="http://localhost/vardump.php"
+            action="../admin/index.html"
             method="post"
             class="mt-4 flex flex-col gap-1 max-w-4xl mx-auto"
           >
@@ -451,17 +451,10 @@
                   class="input input-bordered input-disabled"
                   disabled
                 />
-                <div
-                  class="tooltip tooltip-left tooltip-guide"
-                  data-tip="Nomor Induk Kependudukan yang tercantum pada Kartu Keluarga, Kartu Identitas Anak, atau KTP (jika sudah memiliki) bagi WNI. NIK memiliki format 16 digit angka. Contoh: 6112090906021104.
-                Pastikan NIK tidak tertukar dengan No. Kartu Keluarga, karena keduanya memiliki format yang sama. Bagi WNA, diisi dengan nomor Kartu Izin Tinggal Terbatas (KITAS). "
-                >
-                  <button class="btn btn-xs">?</button>
-                </div>
               </div>
               <div class="control-form">
                 <label for="no_kk" class="label">
-                  <span class="label-text">No. KK</span>
+                  <span class="label-text">No. Kartu Keluarga</span>
                 </label>
                 <input
                   type="text"
@@ -620,6 +613,19 @@
                   type="text"
                   name="desa_kelurahan"
                   id="desa_kelurahan"
+                  class="input input-bordered"
+                  maxlength="100"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="kecamatan" class="label">
+                  <span class="label-text">Kecamatan</span>
+                </label>
+                <input
+                  type="text"
+                  name="kecamatan"
+                  id="kecamatan"
                   class="input input-bordered"
                   maxlength="100"
                   required
@@ -786,7 +792,7 @@
                   id="telp_rumah"
                   class="input input-bordered"
                   maxlength="20"
-                  placeholder="(021) 1234567"
+                  placeholder="021-1234567"
                 />
               </div>
               <div class="control-form">
@@ -878,6 +884,7 @@
                   name="waktu_tempuh_ke_sekolah"
                   id="waktu_tempuh_ke_sekolah"
                   class="input input-bordered"
+                  placeholder="x jam x menit"
                 />
               </div>
               <div class="control-form">
@@ -889,15 +896,19 @@
                   name="jumlah_saudara_kandung"
                   id="jumlah_saudara_kandung"
                   class="input input-bordered"
-                  min="1"
+                  min="0"
                   required
                 />
               </div>
             </section>
-
-            <!-- File Validasi -->
+            <!-- File validasi -->
             <section id="file-validasi">
               <h2>File Validasi</h2>
+              <p class="max-w-3xl text-sm">
+                Silakan upload beberapa file foto untuk keperluan validasi. File
+                foto harus lebih kecil dari 2MB dan berformat jpg, jpeg, png,
+                atau webp.
+              </p>
               <div class="control-form">
                 <label for="file_akta" class="label">
                   <span class="label-text">Foto Akta Kelahiran</span>
@@ -909,12 +920,555 @@
                   class="file-input file-input-bordered"
                   required
                 />
-                <label for="file_akta" class="label label-guide">
-                  <span class="label-text"
-                    >File harus lebih kecil dari 2MB dan berformat jpg, jpeg,
-                    png, atau webp</span
-                  >
+              </div>
+              <div class="control-form">
+                <label for="file_kk" class="label">
+                  <span class="label-text">Foto Kartu Keluarga</span>
                 </label>
+                <input
+                  type="file"
+                  name="file_kk"
+                  id="file_kk"
+                  class="file-input file-input-bordered"
+                  required
+                />
+              </div>
+              <div class="control-form" id="kip_form">
+                <label for="file_kip" class="label">
+                  <span class="label-text">Foto KIP</span>
+                </label>
+                <input
+                  type="file"
+                  name="file_kip"
+                  id="file_kip"
+                  class="file-input file-input-bordered"
+                />
+              </div>
+            </section>
+            <!-- Data ayah -->
+            <section id="data-ayah">
+              <h2>Data Ayah</h2>
+              <div class="control-form">
+                <label for="nama_ayah" class="label">
+                  <span class="label-text">Nama ayah</span>
+                </label>
+                <input
+                  type="text"
+                  name="nama_ayah"
+                  id="nama_ayah"
+                  class="input input-bordered"
+                  maxlength="100"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="nik_ayah" class="label">
+                  <span class="label-text">NIK ayah</span>
+                </label>
+                <input
+                  type="text"
+                  name="nik_ayah"
+                  id="nik_ayah"
+                  class="input input-bordered"
+                  minlength="16"
+                  maxlength="16"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="tahun_lahir_ayah" class="label">
+                  <span class="label-text">Tahun lahir ayah</span>
+                </label>
+                <input
+                  type="number"
+                  name="tahun_lahir_ayah"
+                  id="tahun_lahir_ayah"
+                  class="input input-bordered"
+                  min="1"
+                  max="2023"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="pendidikan_ayah" class="label">
+                  <span class="label-text">Pendidikan ayah</span>
+                </label>
+                <select
+                  name="pendidikan_ayah"
+                  id="pendidikan_ayah"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="tidak_sekolah">Tidak sekolah</option>
+                  <option value="putus_sd">Putus SD</option>
+                  <option value="sd_sederajat">SD/Sederajat</option>
+                  <option value="tk_sederajat">TK/Sederajat</option>
+                  <option value="paud">PAUD</option>
+                  <option value="sp_1">Sp-1</option>
+                  <option value="sp_2">Sp-2</option>
+                  <option value="non_formal">Non formal</option>
+                  <option value="paket_a">Paket A</option>
+                  <option value="paket_b">Paket B</option>
+                  <option value="paket_c">Paket C</option>
+                  <option value="d1">D1</option>
+                  <option value="d2">D2</option>
+                  <option value="d3">D3</option>
+                  <option value="d4">D4</option>
+                  <option value="informal">Informal</option>
+                  <option value="profesi">Profesi</option>
+                  <option value="sma_sederajat">SMA/Sederajat</option>
+                  <option value="smp_sederajat">SMP/Sederajat</option>
+                  <option value="s1">S1</option>
+                  <option value="s2">S2</option>
+                  <option value="s2_terapan">S2 Terapan</option>
+                  <option value="s3">S3</option>
+                  <option value="s3_terapan">S3 Terapan</option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="pekerjaan_ayah" class="label">
+                  <span class="label-text">Pekerjaan ayah</span>
+                </label>
+                <select
+                  name="pekerjaan_ayah"
+                  id="pekerjaan_ayah"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="tidak_bekerja">Tidak bekerja</option>
+                  <option value="nelayan">Nelayan</option>
+                  <option value="petani">Petani</option>
+                  <option value="peternak">Peternak</option>
+                  <option value="pns_tni_polri">PNS/TNI/Polri</option>
+                  <option value="karyawan_swasta">Karyawan swasta</option>
+                  <option value="pedagang_kecil">Pedagang kecil</option>
+                  <option value="pedagang_besar">Pedagang besar</option>
+                  <option value="wiraswasta">Wiraswasta</option>
+                  <option value="wirausaha">Wirausaha</option>
+                  <option value="buruh">Buruh</option>
+                  <option value="pensiunan">Pensiunan</option>
+                  <option value="tenaga_kerja_indonesia">
+                    Tenaga Kerja Indonesia
+                  </option>
+                  <option value="karyawan_bumn">Karyawan BUMN</option>
+                  <option value="tidak_dapat_diterapkan">
+                    Tidak dapat diterapkan
+                  </option>
+                  <option value="sudah_meninggal">Sudah meninggal</option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="penghasilan_ayah" class="label">
+                  <span class="label-text">Penghasilan ayah</span>
+                </label>
+                <select
+                  name="penghasilan_ayah"
+                  id="penghasilan_ayah"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="tidak_berpenghasilan">
+                    Tidak berpenghasilan
+                  </option>
+                  <option value="kurang_dari_500k">
+                    Kurang dari Rp 500,000
+                  </option>
+                  <option value="500k_999k">Rp 500,000 — Rp 999,000</option>
+                  <option value="1000k_1999k">
+                    Rp 1,000,000 — Rp 1,999,999
+                  </option>
+                  <option value="2000k_4999k">
+                    Rp 2,000,000 — Rp 4,999,999
+                  </option>
+                  <option value="5000k_20000k">
+                    Rp 5,000,000 — Rp 20,000,000
+                  </option>
+                  <option value="lebih_dari_20000k">
+                    Lebih dari Rp 20,000,000
+                  </option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="berkebutuhan_khusus_ayah" class="label">
+                  <span class="label-text">Berkebutuhan khusus</span>
+                </label>
+                <select
+                  name="berkebutuhan_khusus_ayah"
+                  id="berkebutuhan_khusus_ayah"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="tidak">tidak</option>
+                  <option value="netra">netra (A)</option>
+                  <option value="rungu">rungu (B)</option>
+                  <option value="grahita_ringan">grahita ringan (C)</option>
+                  <option value="grahita_sedang ">grahita sedang (C1)</option>
+                  <option value="daksa_ringan">daksa ringan (D)</option>
+                  <option value="daksa_sedang ">daksa sedang (D1)</option>
+                  <option value="laras">laras (E)</option>
+                  <option value="wicara">wicara (F)</option>
+                  <option value="hyperaktif">hyperaktif (H)</option>
+                  <option value="cerdas_istimewa">cerdas istimewa (I)</option>
+                  <option value="bakat_istimewa">bakat istimewa (J)</option>
+                  <option value="kesulitan_belajar">
+                    kesulitan belajar (K)
+                  </option>
+                  <option value="narkoba">narkoba (N)</option>
+                  <option value="indigo">indigo (O)</option>
+                  <option value="down_syndrome">down syndrome (P)</option>
+                  <option value="autis">autis (Q)</option>
+                </select>
+              </div>
+            </section>
+            <!-- Data ibu -->
+            <section id="data-ibu">
+              <h2>Data Ibu</h2>
+              <div class="control-form">
+                <label for="nama_ibu" class="label">
+                  <span class="label-text">Nama ibu</span>
+                </label>
+                <input
+                  type="text"
+                  name="nama_ibu"
+                  id="nama_ibu"
+                  class="input input-bordered"
+                  maxlength="100"
+                  disabled
+                />
+              </div>
+              <div class="control-form">
+                <label for="nik_ibu" class="label">
+                  <span class="label-text">NIK ibu</span>
+                </label>
+                <input
+                  type="text"
+                  name="nik_ibu"
+                  id="nik_ibu"
+                  class="input input-bordered"
+                  minlength="16"
+                  maxlength="16"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="tahun_lahir_ibu" class="label">
+                  <span class="label-text">Tahun lahir ibu</span>
+                </label>
+                <input
+                  type="number"
+                  name="tahun_lahir_ibu"
+                  id="tahun_lahir_ibu"
+                  class="input input-bordered"
+                  min="1"
+                  max="2023"
+                  required
+                />
+              </div>
+              <div class="control-form">
+                <label for="pendidikan_ibu" class="label">
+                  <span class="label-text">Pendidikan ibu</span>
+                </label>
+                <select
+                  name="pendidikan_ibu"
+                  id="pendidikan_ibu"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="tidak_sekolah">Tidak sekolah</option>
+                  <option value="putus_sd">Putus SD</option>
+                  <option value="sd_sederajat">SD/Sederajat</option>
+                  <option value="tk_sederajat">TK/Sederajat</option>
+                  <option value="paud">PAUD</option>
+                  <option value="sp_1">Sp-1</option>
+                  <option value="sp_2">Sp-2</option>
+                  <option value="non_formal">Non formal</option>
+                  <option value="paket_a">Paket A</option>
+                  <option value="paket_b">Paket B</option>
+                  <option value="paket_c">Paket C</option>
+                  <option value="d1">D1</option>
+                  <option value="d2">D2</option>
+                  <option value="d3">D3</option>
+                  <option value="d4">D4</option>
+                  <option value="informal">Informal</option>
+                  <option value="profesi">Profesi</option>
+                  <option value="sma_sederajat">SMA/Sederajat</option>
+                  <option value="smp_sederajat">SMP/Sederajat</option>
+                  <option value="s1">S1</option>
+                  <option value="s2">S2</option>
+                  <option value="s2_terapan">S2 Terapan</option>
+                  <option value="s3">S3</option>
+                  <option value="s3_terapan">S3 Terapan</option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="pekerjaan_ibu" class="label">
+                  <span class="label-text">Pekerjaan ibu</span>
+                </label>
+                <select
+                  name="pekerjaan_ibu"
+                  id="pekerjaan_ibu"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="tidak_bekerja">Tidak bekerja</option>
+                  <option value="nelayan">Nelayan</option>
+                  <option value="petani">Petani</option>
+                  <option value="peternak">Peternak</option>
+                  <option value="pns_tni_polri">PNS/TNI/Polri</option>
+                  <option value="karyawan_swasta">Karyawan swasta</option>
+                  <option value="pedagang_kecil">Pedagang kecil</option>
+                  <option value="pedagang_besar">Pedagang besar</option>
+                  <option value="wiraswasta">Wiraswasta</option>
+                  <option value="wirausaha">Wirausaha</option>
+                  <option value="buruh">Buruh</option>
+                  <option value="pensiunan">Pensiunan</option>
+                  <option value="tenaga_kerja_indonesia">
+                    Tenaga Kerja Indonesia
+                  </option>
+                  <option value="karyawan_bumn">Karyawan BUMN</option>
+                  <option value="tidak_dapat_diterapkan">
+                    Tidak dapat diterapkan
+                  </option>
+                  <option value="sudah_meninggal">Sudah meninggal</option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="penghasilan_ibu" class="label">
+                  <span class="label-text">Penghasilan ibu</span>
+                </label>
+                <select
+                  name="penghasilan_ibu"
+                  id="penghasilan_ibu"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="tidak_berpenghasilan">
+                    Tidak berpenghasilan
+                  </option>
+                  <option value="kurang_dari_500k">
+                    Kurang dari Rp 500,000
+                  </option>
+                  <option value="500k_999k">Rp 500,000 — Rp 999,000</option>
+                  <option value="1000k_1999k">
+                    Rp 1,000,000 — Rp 1,999,999
+                  </option>
+                  <option value="2000k_4999k">
+                    Rp 2,000,000 — Rp 4,999,999
+                  </option>
+                  <option value="5000k_20000k">
+                    Rp 5,000,000 — Rp 20,000,000
+                  </option>
+                  <option value="lebih_dari_20000k">
+                    Lebih dari Rp 20,000,000
+                  </option>
+                </select>
+              </div>
+              <div class="control-form">
+                <label for="berkebutuhan_khusus_ibu" class="label">
+                  <span class="label-text">Berkebutuhan khusus</span>
+                </label>
+                <select
+                  name="berkebutuhan_khusus_ibu"
+                  id="berkebutuhan_khusus_ibu"
+                  class="select select-bordered"
+                  required
+                >
+                  <option value="tidak">tidak</option>
+                  <option value="netra">netra (A)</option>
+                  <option value="rungu">rungu (B)</option>
+                  <option value="grahita_ringan">grahita ringan (C)</option>
+                  <option value="grahita_sedang ">grahita sedang (C1)</option>
+                  <option value="daksa_ringan">daksa ringan (D)</option>
+                  <option value="daksa_sedang ">daksa sedang (D1)</option>
+                  <option value="laras">laras (E)</option>
+                  <option value="wicara">wicara (F)</option>
+                  <option value="hyperaktif">hyperaktif (H)</option>
+                  <option value="cerdas_istimewa">cerdas istimewa (I)</option>
+                  <option value="bakat_istimewa">bakat istimewa (J)</option>
+                  <option value="kesulitan_belajar">
+                    kesulitan belajar (K)
+                  </option>
+                  <option value="narkoba">narkoba (N)</option>
+                  <option value="indigo">indigo (O)</option>
+                  <option value="down_syndrome">down syndrome (P)</option>
+                  <option value="autis">autis (Q)</option>
+                </select>
+              </div>
+            </section>
+            <!-- Data ayah -->
+            <section id="data-wali">
+              <h2>Data Wali</h2>
+              <div class="control-form">
+                <label class="label">
+                  <span class="label-text">Mempunyai Wali?</span>
+                </label>
+                <div class="radio-container">
+                  <input
+                    type="radio"
+                    name="mempunyai_wali"
+                    id="mempunyai_wali_ya"
+                    value="ya"
+                    class="radio radio-xs"
+                    required
+                  />
+                  <label for="mempunyai_wali_ya" class="label">Ya</label>
+                  <input
+                    type="radio"
+                    name="mempunyai_wali"
+                    id="mempunyai_wali_tidak"
+                    value="tidak"
+                    class="radio radio-xs"
+                  />
+                  <label for="mempunyai_wali_tidak" class="label">Tidak</label>
+                </div>
+              </div>
+              <div id="wali">
+                <div class="control-form">
+                  <label for="nama_wali" class="label">
+                    <span class="label-text">Nama wali</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="nama_wali"
+                    id="nama_wali"
+                    class="input input-bordered"
+                    maxlength="100"
+                    required
+                  />
+                </div>
+                <div class="control-form">
+                  <label for="nik_wali" class="label">
+                    <span class="label-text">NIK wali</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="nik_wali"
+                    id="nik_wali"
+                    class="input input-bordered"
+                    minlength="16"
+                    maxlength="16"
+                    required
+                  />
+                </div>
+                <div class="control-form">
+                  <label for="tahun_lahir_wali" class="label">
+                    <span class="label-text">Tahun lahir wali</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="tahun_lahir_wali"
+                    id="tahun_lahir_wali"
+                    class="input input-bordered"
+                    min="1"
+                    max="2023"
+                    required
+                  />
+                </div>
+                <div class="control-form">
+                  <label for="pendidikan_wali" class="label">
+                    <span class="label-text">Pendidikan wali</span>
+                  </label>
+                  <select
+                    name="pendidikan_wali"
+                    id="pendidikan_wali"
+                    class="select select-bordered"
+                    required
+                  >
+                    <option value="tidak_sekolah">Tidak sekolah</option>
+                    <option value="putus_sd">Putus SD</option>
+                    <option value="sd_sederajat">SD/Sederajat</option>
+                    <option value="tk_sederajat">TK/Sederajat</option>
+                    <option value="paud">PAUD</option>
+                    <option value="sp_1">Sp-1</option>
+                    <option value="sp_2">Sp-2</option>
+                    <option value="non_formal">Non formal</option>
+                    <option value="paket_a">Paket A</option>
+                    <option value="paket_b">Paket B</option>
+                    <option value="paket_c">Paket C</option>
+                    <option value="d1">D1</option>
+                    <option value="d2">D2</option>
+                    <option value="d3">D3</option>
+                    <option value="d4">D4</option>
+                    <option value="informal">Informal</option>
+                    <option value="profesi">Profesi</option>
+                    <option value="sma_sederajat">SMA/Sederajat</option>
+                    <option value="smp_sederajat">SMP/Sederajat</option>
+                    <option value="s1">S1</option>
+                    <option value="s2">S2</option>
+                    <option value="s2_terapan">S2 Terapan</option>
+                    <option value="s3">S3</option>
+                    <option value="s3_terapan">S3 Terapan</option>
+                    <option value="lainnya">Lainnya</option>
+                  </select>
+                </div>
+                <div class="control-form">
+                  <label for="pekerjaan_wali" class="label">
+                    <span class="label-text">Pekerjaan wali</span>
+                  </label>
+                  <select
+                    name="pekerjaan_wali"
+                    id="pekerjaan_wali"
+                    class="select select-bordered"
+                    required
+                  >
+                    <option value="tidak_bekerja">Tidak bekerja</option>
+                    <option value="nelayan">Nelayan</option>
+                    <option value="petani">Petani</option>
+                    <option value="peternak">Peternak</option>
+                    <option value="pns_tni_polri">PNS/TNI/Polri</option>
+                    <option value="karyawan_swasta">Karyawan swasta</option>
+                    <option value="pedagang_kecil">Pedagang kecil</option>
+                    <option value="pedagang_besar">Pedagang besar</option>
+                    <option value="wiraswasta">Wiraswasta</option>
+                    <option value="wirausaha">Wirausaha</option>
+                    <option value="buruh">Buruh</option>
+                    <option value="pensiunan">Pensiunan</option>
+                    <option value="tenaga_kerja_indonesia">
+                      Tenaga Kerja Indonesia
+                    </option>
+                    <option value="karyawan_bumn">Karyawan BUMN</option>
+                    <option value="tidak_dapat_diterapkan">
+                      Tidak dapat diterapkan
+                    </option>
+                    <option value="sudah_meninggal">Sudah meninggal</option>
+                    <option value="lainnya">Lainnya</option>
+                  </select>
+                </div>
+                <div class="control-form">
+                  <label for="penghasilan_wali" class="label">
+                    <span class="label-text">Penghasilan wali</span>
+                  </label>
+                  <select
+                    name="penghasilan_wali"
+                    id="penghasilan_wali"
+                    class="select select-bordered"
+                    required
+                  >
+                    <option value="tidak_berpenghasilan">
+                      Tidak berpenghasilan
+                    </option>
+                    <option value="kurang_dari_500k">
+                      Kurang dari Rp 500,000
+                    </option>
+                    <option value="500k_999k">Rp 500,000 — Rp 999,000</option>
+                    <option value="1000k_1999k">
+                      Rp 1,000,000 — Rp 1,999,999
+                    </option>
+                    <option value="2000k_4999k">
+                      Rp 2,000,000 — Rp 4,999,999
+                    </option>
+                    <option value="5000k_20000k">
+                      Rp 5,000,000 — Rp 20,000,000
+                    </option>
+                    <option value="lebih_dari_20000k">
+                      Lebih dari Rp 20,000,000
+                    </option>
+                  </select>
+                </div>
               </div>
             </section>
             <div class="flex justify-end max-w-4xl">
@@ -922,7 +1476,350 @@
             </div>
           </form>
         </div>
+        <label for="help" class="btn btn-circle fixed bottom-4 right-4">
+          <img src="../assets/icons/help.svg" class="invert w-10" />
+        </label>
       </div>
     </main>
+    <input type="checkbox" id="help" class="modal-toggle" />
+    <label for="help" class="modal cursor-pointer">
+      <label class="modal-box min-h-[85vh] relative" for="">
+        <div class="flex justify-between items-center">
+          <h2 class="text-3xl">Bantuan</h2>
+          <label for="help" class="btn btn-sm btn-ghost">
+            <img src="../assets/icons/cancel_circle.svg" class="w-7" />
+          </label>
+        </div>
+        <!-- Data Pribadi -->
+        <div
+          tabindex="0"
+          class="collapse collapse-plus border border-base-300 bg-base-100 rounded-md mt-2"
+        >
+          <input type="checkbox" />
+          <h3 class="collapse-title text-xl font-medium">Data Pribadi</h3>
+          <div class="collapse-content">
+            <h4>Nama</h4>
+            <p>Nama tidak dapat diubah.</p>
+            <h4>Jenis Kelamin</h4>
+            <p>Jenis kelamin tidak dapat diubah.</p>
+            <h4>NISN</h4>
+            <p>NISN tidak dapat diubah.</p>
+            <h4>Kewarganegaraan</h4>
+            <p>Kewarganegaraan peserta didik.</p>
+            <h4>NIK</h4>
+            <p>NIK tidak dapat diubah.</p>
+            <h4>No. KK</h4>
+            <p>
+              Nomor kartu keluarga terletak di bagian tengah atas pada kartu
+              keluarga.
+            </p>
+            <h4>Tempat Lahir</h4>
+            <p>Tempat lahir tidak dapat diubah.</p>
+            <h4>Tanggal lahir</h4>
+            <p>Tanggal lahir tidak dapat diubah.</p>
+            <h4>No. Registrasi Akta Lahir</h4>
+            <p>
+              Nomor registrasi Akta Kelahiran. Nomor registrasi yang dimaksud
+              umumnya tercantum pada bagian tengah atas lembar kutipan akta
+              kelahiran.
+            </p>
+            <h4>Berkebutuhan khusus</h4>
+            <p>Kebutuhan khusus yang disandang oleh peserta didik.</p>
+            <h4>Agama & Kepercayaan</h4>
+            <p>
+              Agama atau kepercayaan yang dianut oleh peserta didik. Apabila
+              peserta didik adalah penghayat kepercayaan (misalnya pada daerah
+              tertentu yang masih memiliki penganut kepercayaan), dapat memilih
+              opsi Kepercayaan kpd Tuhan YME.
+            </p>
+            <h4>Alamat jalan</h4>
+            <p>
+              Jalur tempat tinggal peserta didik, terdiri atas gang, kompleks,
+              blok, nomor rumah, dan sebagainya selain informasi yang diminta
+              oleh kolom-kolom yang lain pada bagian ini. Sebagai contoh,
+              peserta didik tinggal di sebuah kompleks perumahan Griya Adam yang
+              berada pada Jalan Kemanggisan, dengan nomor rumah 4-C, di
+              lingkungan RT 005 dan RW 011, Dusun Cempaka, Desa Salatiga. Maka
+              dapat diisi dengan Jl. Kemanggisan, Komp. Griya Adam, No. 4-C.
+            </p>
+            <h4>RT</h4>
+            <p>Nomor RT tempat tinggal peserta didik saat ini.</p>
+            <h4>RW</h4>
+            <p>Nomor RW tempat tinggal peserta didik saat ini.</p>
+            <h4>Nama dusun</h4>
+            <p>Nama dusun tempat tinggal peserta didik saat ini.</p>
+            <h4>Desa/Kelurahan</h4>
+            <p>
+              Nama desa atau kelurahan tempat tinggal peserta didik saat ini.
+            </p>
+            <h4>Kecamatan</h4>
+            <p>Kecamatan tempat tinggal peserta didik saat ini.</p>
+            <h4>Kode pos</h4>
+            <p>Kode pos tempat tinggal peserta didik saat ini.</p>
+            <h4>Lintang</h4>
+            <p>
+              Diisi dengan titik koordinat lintang (latitude) yang muncul pada
+              peta di lokasi Peserta Didik tinggal.
+            </p>
+            <h4>Bujur</h4>
+            <p>
+              Diisi dengan titik koordinas bujur (longitude) yang muncul pada
+              peta dilokasi peserta didik tinggal.
+            </p>
+            <h4>Tempat tinggal</h4>
+            <p>Kepemilikan tempat tinggal peserta didik saat ini.</p>
+            <h4>Moda transportasi</h4>
+            <p>
+              Jenis transportasi utama atau yang paling sering digunakan peserta
+              didik untuk berangkat ke sekolah.
+            </p>
+            <h4>Anak ke-berapa (berdasarkan KK)</h4>
+            <p>Isi urutan anak keberapa sesuai dengan KK.</p>
+            <h4>Penerima KPS/PKH</h4>
+            <p>
+              Status peserta didik sebagai penerima manfaat KPS (Kartu
+              Perlindungan Sosial)/PKH (Program Keluarga Harapan). Peserta didik
+              dinyatakan sebagai penerima KPS/PKH apabila tercantum di dalam
+              kartu keluarga dengan kepala keluarga pemegang KPS/PKH. Sebagai
+              contoh, peserta didik tercantum pada KK dengan kepala keluarganya
+              adalah kakek. Apabila kakek peserta didik tersebut pemegang
+              KPS/PKH, maka peserta didik yang bersangkutan dinyatakan penerima
+              KPS/PKH.
+            </p>
+            <h4>Apakah punya KIP?</h4>
+            <p>
+              Pilih Ya apabila peserta didik memiliki Kartu Indonesia Pintar
+              (KIP). Pilih Tidak jika tidak memiliki.
+            </p>
+            <h4>Telepon Rumah</h4>
+            <p>
+              Diisi nomor telepon rumah peserta didik yang dapat dihubungi
+              (milik pribadi, orang tua, atau wali) dengan format &lt;kode
+              area&gt;-&lt;nomor telepon&gt;. Contoh: 021-775577.
+            </p>
+            <h4>Nomor HP</h4>
+            <p>
+              Diisi nomor telepon selular (ponsel) peserta didik yang dapat
+              dihubungi (milik pribadi, orang tua, atau wali).
+            </p>
+            <h4>Email</h4>
+            <p>
+              Diisi alamat surat elektronik (surel) peserta didik yang dapat
+              dihubungi (milik pribadi, orang tua, atau wali).
+            </p>
+          </div>
+        </div>
+        <!-- Data Periodik -->
+        <div
+          tabindex="0"
+          class="collapse collapse-plus border border-base-300 bg-base-100 rounded-md mt-2"
+        >
+          <input type="checkbox" />
+          <h3 class="collapse-title text-xl font-medium">Data Periodik</h3>
+          <div class="collapse-content">
+            <h4>Tinggi badan (cm)</h4>
+            <p>
+              Tinggi badan peserta didik saat ini dalam satuan sentimeter (cm).
+            </p>
+            <h4>Berat badan (kg)</h4>
+            <p>
+              Berat badan peserta didik saat ini dalam satuan kilogram (kg).
+            </p>
+            <h4>Lingkar kepala (cm)</h4>
+            <p>
+              Lingkar kepala peserta didik saat ini dalam satuan sentimeter
+              (cm).
+            </p>
+            <h4>Jarak rumah ke sekolah (km)</h4>
+            <p>
+              Jarak rumah peserta didik saat ini ke sekolah dalam satuan
+              kilometer (km).
+            </p>
+            <h4>Waktu tempuh ke sekolah (jam/menit)</h4>
+            <p>
+              Lama tempuh peserta didik ke sekolah. Menggunakan format x jam x
+              menit. Misalnya, 1 jam 15 menit.
+            </p>
+            <h4>Jumlah saudara kandung</h4>
+            <p>
+              Jumlah saudara kandung yang dimiliki peserta didik. Jumlah saudara
+              kandung dihitung tanpa menyertakan peserta didik, dengan rumus
+              jumlah kakak ditambah jumlah adik. Isikan 0 apabila anak tunggal.
+            </p>
+          </div>
+        </div>
+        <!-- File Validasi -->
+        <div
+          tabindex="0"
+          class="collapse collapse-plus border border-base-300 bg-base-100 rounded-md mt-2"
+        >
+          <input type="checkbox" />
+          <h3 class="collapse-title text-xl font-medium">File Validasi</h3>
+          <div class="collapse-content">
+            <h4>Foto Akta Kelahiran</h4>
+            <p>
+              Foto Akta Kelahiran untuk keperluan validasi, file foto harus
+              lebih kecil dari 2MB dan berformat jpg, jpeg, png, atau webp.
+            </p>
+            <h4>Foto KK</h4>
+            <p>
+              Foto Kartu Keluarga untuk keperluan validasi, file foto harus
+              lebih kecil dari 2MB dan berformat jpg, jpeg, png, atau webp.
+            </p>
+            <h4>Foto KIP (Bagi yang menerima KIP)</h4>
+            <p>
+              Foto KIP untuk keperluan validasi, file foto harus lebih kecil
+              dari 2MB dan berformat jpg, jpeg, png, atau webp. Jika peserta
+              didik tidak menerima KIP, kolom ini tidak perlu diisi.
+            </p>
+          </div>
+        </div>
+        <!-- Data Ayah -->
+        <div
+          tabindex="0"
+          class="collapse collapse-plus border border-base-300 bg-base-100 rounded-md mt-2"
+        >
+          <input type="checkbox" />
+          <h3 class="collapse-title text-xl font-medium">Data Ayah</h3>
+          <div class="collapse-content">
+            <h4>Nama ayah</h4>
+            <p>
+              Nama ayah kandung peserta didik sesuai dokumen resmi yang berlaku.
+              Hindari penggunaan gelar akademik atau sosial (seperti Alm., Dr.,
+              Drs., S.Pd, dan H.).
+            </p>
+            <h4>NIK ayah</h4>
+            <p>
+              Nomor Induk Kependudukan yang tercantum pada Kartu Keluarga atau
+              KTP ayah kandung peserta didik.
+            </p>
+            <h4>Tahun lahir ayah</h4>
+            <p>Tahun lahir ayah kandung peserta didik.</p>
+            <h4>Pendidikan ayah</h4>
+            <p>Pendidikan terakhir ayah kandung peserta didik.</p>
+            <h4>Pekerjaan ayah</h4>
+            <p>
+              Pekerjaan utama ayah kandung peserta didik. Pilih Meninggal Dunia
+              apabila ayah kandung peserta didik telah meninggal dunia.
+            </p>
+            <h4>Penghasilan ayah</h4>
+            <p>Rentang penghasilan ayah kandung peserta didik.</p>
+            <h4>Berkebutuhan khusus ayah</h4>
+            <p>Kebutuhan khusus yang disandang oleh ayah peserta didik.</p>
+          </div>
+        </div>
+        <!-- Data Ibu -->
+        <div
+          tabindex="0"
+          class="collapse collapse-plus border border-base-300 bg-base-100 rounded-md mt-2"
+        >
+          <input type="checkbox" />
+          <h3 class="collapse-title text-xl font-medium">Data Ibu</h3>
+          <div class="collapse-content">
+            <h4>Nama ibu</h4>
+            <p>Nama ibu tidak dapat diubah.</p>
+            <h4>NIK ibu</h4>
+            <p>
+              Nomor Induk Kependudukan yang tercantum pada Kartu Keluarga atau
+              KTP ibu kandung peserta didik.
+            </p>
+            <h4>Tahun lahir ibu</h4>
+            <p>Tahun lahir ibu kandung peserta didik.</p>
+            <h4>Pendidikan ibu</h4>
+            <p>Pendidikan terakhir ibu kandung peserta didik.</p>
+            <h4>Pekerjaan ibu</h4>
+            <p>
+              Pekerjaan utama ibu kandung peserta didik. Pilih Meninggal Dunia
+              apabila ibu kandung peserta didik telah meninggal dunia. Pilih
+              Lainnya apabila sebagai ibu/pengurus rumah tangga.
+            </p>
+            <h4>Penghasilan ibu</h4>
+            <p>Rentang penghasilan ibu kandung peserta didik.</p>
+            <h4>Berkebutuhan khusus ibu</h4>
+            <p>Kebutuhan khusus yang disandang oleh ibu peserta didik.</p>
+          </div>
+        </div>
+        <!-- Data Wali -->
+        <div
+          tabindex="0"
+          class="collapse collapse-plus border border-base-300 bg-base-100 rounded-md mt-2"
+        >
+          <input type="checkbox" />
+          <h3 class="collapse-title text-xl font-medium">Data Wali</h3>
+          <div class="collapse-content">
+            <h4>Nama wali</h4>
+            <p>
+              Nama wali peserta didik sesuai dokumen resmi yang berlaku. Hindari
+              penggunaan gelar akademik atau sosial (seperti Dr., Drs., S.Pd,
+              dan H.).
+            </p>
+            <h4>NIK wali</h4>
+            <p>
+              Nomor Induk Kependudukan yang tercantum pada Kartu Keluarga atau
+              KTP wali peserta didik.
+            </p>
+            <h4>Tahun lahir wali</h4>
+            <p>Tahun lahir wali peserta didik.</p>
+            <h4>Pendidikan wali</h4>
+            <p>Pendidikan terakhir wali peserta didik.</p>
+            <h4>Pekerjaan wali</h4>
+            <p>Pekerjaan utama wali peserta didik.</p>
+            <h4>Penghasilan wali</h4>
+            <p>
+              Rentang penghasilan wali peserta didik. Kosongkan kolom ini
+              apabila wali peserta didik tidak bekerja.
+            </p>
+          </div>
+        </div>
+      </label>
+    </label>
+    <script>
+      const punya_kip = document.querySelector('input[name="mempunyai_kip"]');
+      const kip_form = document.querySelector("#kip_form");
+      const punya_wali = document.querySelector('input[name="mempunyai_wali"]');
+      const wali_form = document.querySelector("#wali");
+
+      function toggleKIP() {
+        if (punya_kip.checked) {
+          kip_form.style.display = "flex";
+          kip_form.querySelectorAll("input").forEach((el) => {
+            el.required = true;
+          });
+        } else {
+          kip_form.style.display = "none";
+          kip_form.querySelectorAll("input").forEach((el) => {
+            el.required = false;
+          });
+        }
+      }
+
+      function toggleWali() {
+        if (punya_wali.checked) {
+          wali_form.style.display = "block";
+          wali_form.querySelectorAll("input, select").forEach((el) => {
+            el.required = true;
+          });
+        } else {
+          wali_form.style.display = "none";
+          wali_form.querySelectorAll("input, select").forEach((el) => {
+            el.required = false;
+          });
+        }
+      }
+
+      toggleKIP();
+      toggleWali();
+
+      document
+        .querySelectorAll('input[name="mempunyai_kip"]')
+        .forEach((input) => {
+          input.addEventListener("change", toggleKIP);
+        });
+      document
+        .querySelectorAll('input[name="mempunyai_wali"]')
+        .forEach((input) => {
+          input.addEventListener("change", toggleWali);
+        });
+    </script>
   </body>
 </html>

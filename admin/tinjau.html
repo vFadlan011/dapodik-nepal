@@ -303,12 +303,17 @@
         theme: "snow", // or 'bubble'
       });
     </script>
+    <tr>
+      <td>Nama</td>
+      <td class="copy-container">
+        <span>James Bon</span>
+        <div class="copy-btn">
+          <img src="../assets/icons/content_copy.svg" />
+        </div>
+      </td>
+    </tr>
     <script>
       const copyBtns = document.querySelectorAll(".copy-btn");
-
-      const tooltip = document.createElement("div");
-      tooltip.classList.add("tooltip", "tooltip-open", "tooltip-left");
-      tooltip.setAttribute("data-tip", "disalin!");
 
       copyBtns.forEach(function (copyBtn) {
         copyBtn.addEventListener("click", function () {
@@ -317,11 +322,25 @@
             .querySelector("span").innerHTML;
           navigator.clipboard.writeText(textToCopy);
 
-          copyBtn.parentNode.insertBefore(tooltip, copyBtn.nextSibling);
-          tooltip.appendChild(copyBtn);
-          setTimeout(function () {
-            tooltip.replaceWith(copyBtn);
-          }, 5000);
+          // remove any existing tooltip
+          const tooltip = copyBtn.parentNode.querySelector(".tooltip");
+          if (tooltip) {
+            tooltip.parentNode.removeChild(tooltip);
+          }
+
+          // create and show new tooltip
+          const newTooltip = document.createElement("div");
+          newTooltip.classList.add("tooltip", "tooltip-open", "tooltip-left");
+          newTooltip.setAttribute("data-tip", "disalin!");
+          copyBtn.parentNode.insertBefore(newTooltip, copyBtn.nextSibling);
+
+          // remove tooltip when clicked again
+          copyBtn.addEventListener("click", function () {
+            const tooltip = copyBtn.parentNode.querySelector(".tooltip");
+            if (tooltip) {
+              tooltip.parentNode.removeChild(tooltip);
+            }
+          });
         });
       });
     </script>
